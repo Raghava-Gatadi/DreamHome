@@ -6,60 +6,55 @@
     <div class="bg-white rounded-xl p-4">
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">List the number, name, and telephone number of clients and their property preferences at a given branch.</h1>
-            <form action="">
-                {% csrf_token %}
+            <form action="{% url 'cq-1' %}">
                 <div class="flex justify-between items-center my-2">
                     <div class="flex items-center gap-3">
                         <h1 class="">Branch name: </h1>
                         <input class="outline-none border-2 border-black rounded-xl" type="text">
                     </div>
-                    <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
         </div>
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">List the clients registering at the branch and the names of the members of staff who registered the clients.</h1>
-            <form action="">
-                {% csrf_token %}
+            <form action="{% url 'cq-2' %}">
                 <div class="flex justify-between items-center my-2">
                     <div class="flex items-center gap-3">
                         <h1 class="">Branch name: </h1>
                         <input class="outline-none border-2 border-black rounded-xl" type="text">
                     </div>
-                    <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
         </div>
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]"> List the details of comments made by clients viewing a given property.</h1>
-            <form action="">
-                {% csrf_token %}
+            <form action="{% url 'cq-3' %}">
                 <div class="flex justify-between items-center my-2">
                     <div class="flex items-center gap-2">
                         <h1 class="">Property name: </h1>
                         <input class="outline-none border-2 border-black rounded-xl" type="text">
                     </div>
-                    <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
         </div>
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">Display the names and phone numbers of clients who have viewed a given property but not supplied comments.</h1>
-            <form action="">
-                {% csrf_token %}
+            <form action="{% url 'cq-4' %}">
                 <div class="flex justify-between items-center my-2">
                     <div class="flex items-center gap-2">
                         <h1 class="">Property name: </h1>
                         <input class="outline-none border-2 border-black rounded-xl" type="text">
                     </div>
-                    <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
         </div>
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">Display the details of a lease between a named client and a given property.</h1>
-            <form action="">
-                {% csrf_token %}
+            <form action="{% url 'cq-5' %}">
                 <div class="flex justify-between items-center my-2">
                     <div>
                         <div class="flex items-center gap-2 mb-2">
@@ -71,20 +66,19 @@
                             <input class="outline-none border-2 border-black rounded-xl" type="text">
                         </div>
                     </div>
-                    <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
         </div>
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">Produce a list of clients whose preferences match a particular property.</h1>
-            <form action="">
-                {% csrf_token %}
+            <form action="{% url 'cq-6' %}">
                 <div class="flex justify-between items-center my-2">
                     <div class="flex items-center gap-2">
                         <h1 class="">Property name: </h1>
                         <input class="outline-none border-2 border-black rounded-xl" type="text">
                     </div>
-                    <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
         </div>

@@ -6,52 +6,47 @@
     <div class="bg-white rounded-xl p-4">
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">Identify the total number of staff and the sum of their salaries.</h1>
-            <form action="">
-                {% csrf_token %}
+            <form action="{% url 'sq-1' %}">
                 <div class="flex justify-end items-center my-2">
-                    <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
         </div>
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">Identify the total number of staff in each position at branches in Glasgow.</h1>
-            <form action="">
-                {% csrf_token %}
+            <form action="{% url 'sq-2' %}">
                 <div class="flex justify-end items-center my-2">
-                    <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
         </div>
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">List the name, position, and salary of staff at a given branch, ordered by staff name.</h1>
-            <form action="">
-                {% csrf_token %}
+            <form action="{% url 'sq-3' %}">
                 <div class="flex justify-between items-center my-2">
                     <div class="flex items-center gap-2">
                         <h1 class="mr-10">Branch name: </h1>
                         <input class="outline-none border-2 border-black rounded-xl" type="text">
                     </div>
-                    <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
         </div>
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">List the name, position, and salary of staff at a given branch, ordered by staff name.List the names of staff supervised by a named Supervisor.</h1>
-            <form action="">
-                {% csrf_token %}
+            <form action="{% url 'sq-4' %}">
                 <div class="flex justify-between items-center my-2">
                     <div class="flex items-center gap-2">
                         <h1 class="mr-4">Supervisor name: </h1>
                         <input class="outline-none border-2 border-black rounded-xl" type="text">
                     </div>
-                    <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
         </div>
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">List details of staff supervised by a named Supervisor at the branch.</h1>
-            <form action="">
-                {% csrf_token %}
+            <form action="{% url 'sq-5' %}">
                 <div class="flex justify-between items-center my-2">
                     <div>
                         <div class="flex items-center gap-2 mb-2">
@@ -63,7 +58,7 @@
                             <input class="outline-none border-2 border-black rounded-xl" type="text">
                         </div>
                     </div>
-                    <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
         </div>

@@ -6,10 +6,9 @@
     <div class="bg-white rounded-xl p-4">
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">List the name of each Manager at each branch, ordered by branch address.</h1>
-            <form action="">
-                {% csrf_token %}
+            <form action="{% url 'mq-1' %}">
                 <div class="flex justify-end items-center my-2">
-                    <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
         </div>

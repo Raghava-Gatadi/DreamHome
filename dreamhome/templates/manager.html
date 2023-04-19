@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Manager Queries{% endblock title %}
+{% block manager %}text-2xl font-semibold text-[#455A45]{% endblock manager %}
+{% block content %}
+<div class="bg-[#D1E5D0] p-4 px-[10%] m-auto max-w-screen-2xl">
+    <div class="bg-white rounded-xl p-4">
+        <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
+            <h1 class="text-2xl font-medium text-[#5B735A]">List the name of each Manager at each branch, ordered by branch address.</h1>
+            <form action="">
+                {% csrf_token %}
+                <div class="flex justify-end items-center my-2">
+                    <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block title %}Branch Queries{% endblock title %}
+{% block branch %}text-2xl font-semibold text-[#455A45]{% endblock branch %}
+{% block content %}
+    <div class="bg-[#D1E5D0] p-4 px-[10%] m-auto max-w-screen-2xl">
+        <div class="bg-white rounded-xl p-4">
+            <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
+                <h1 class="text-2xl font-medium text-[#5B735A]">Identify the total number of staff in each position at branches in Glasgow.</h1>
+                <form action="">
+                    {% csrf_token %}
+                    <div class="flex justify-end items-center my-2">
+                        <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1  hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    </div>
+                </form>
+            </div>
+            <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
+                <h1 class="text-2xl font-medium text-[#5B735A]">List the total number of leases with rental periods that are less than one year at branches in
+                    London.</h1>
+                <form action="">
+                    {% csrf_token %}
+                    <div class="flex justify-end items-center my-2">
+                        <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1  hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    </div>
+                </form>
+            </div>
+            <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
+                <h1 class="text-2xl font-medium text-[#5B735A]">List the total possible daily rental for property at each branch, ordered by branch number.</h1>
+                <form action="">
+                    {% csrf_token %}
+                    <div class="flex justify-end items-center my-2">
+                        <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1  hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    </div>
+                </form>
+            </div>
+            <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
+                <h1 class="text-2xl font-medium text-[#5B735A]">List the details of branches in a given city.</h1>
+                <form action="">
+                    {% csrf_token %}
+                    <div class="flex justify-between items-center my-2">
+                        <div class="flex items-center gap-3">
+                            <h1 class="mr-[4rem]">City: </h1>
+                            <input class="outline-none border-2 border-black rounded-xl" type="text">
+                        </div>
+                        <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    </div>
+                </form>
+            </div>
+            <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
+                <h1 class="text-2xl font-medium text-[#5B735A]">Identify the total number of branches in each city.</h1>
+                <form action="">
+                    {% csrf_token %}
+                    <div class="flex justify-between items-center my-2">
+                        <div class="flex items-center gap-3">
+                            <h1 class="mr-[4rem]">City: </h1>
+                            <input class="outline-none border-2 border-black rounded-xl" type="text">
+                        </div>
+                        <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1  hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    </div>
+                </form>
+            </div>
+            <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
+                <h1 class="text-2xl font-medium text-[#5B735A]">List the name, position, and salary of staff at a given branch, ordered by staff name.</h1>
+                <form action="">
+                    {% csrf_token %}
+                    <div class="flex justify-between items-center my-2">
+                        <div class="flex items-center gap-3">
+                            <h1>Branch name: </h1>
+                            <input class="outline-none border-2 border-black rounded-xl" type="text">
+                        </div>
+                        <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1  hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    </div>
+                </form>
+            </div>
+            <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
+                <h1 class="text-2xl font-medium text-[#5B735A]">Identify the total number of properties assigned to each member of staff at a given branch.</h1>
+                <form action="">
+                    {% csrf_token %}
+                    <div class="flex justify-between items-center my-2">
+                        <div class="flex items-center gap-3">
+                            <h1>Branch name: </h1>
+                            <input class="outline-none border-2 border-black rounded-xl" type="text">
+                        </div>
+                        <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1  hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    </div>
+                </form>
+            </div>
+            <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
+                <h1 class="text-2xl font-medium text-[#5B735A]">List the details of leases due to expire next month at a given branch.</h1>
+                <form action="">
+                    {% csrf_token %}
+                    <div class="flex justify-between items-center my-2">
+                        <div class="flex items-center gap-3">
+                            <h1>Branch name: </h1>
+                            <input class="outline-none border-2 border-black rounded-xl" type="text">
+                        </div>
+                        <div><button class="bg-black text-white rounded-2xl text-lg px-3 py-1  hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

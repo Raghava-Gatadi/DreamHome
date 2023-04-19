@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block links %}{% endblock links %}
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    <nav class="h-[90px] bg-gray-50 flex justify-between items-center px-4 py-2">
+        <a href="{% url 'home' %}">
+            <img class="w-52" src="{% static 'logo.png' %}" alt="test">
+        </a>
+        <div class="flex gap-6 items-center text-2xl font-light">
+            <a class="hover:scale-[1.2] duration-300 hover:text-[#455A45] hover:font-medium {% block branch %}{% endblock branch %}" href="{% url 'branch-queries' %}">Branches</a>
+            <a class="hover:scale-[1.2] duration-300 hover:text-[#455A45] hover:font-medium {% block client %}{% endblock client %}" href="{% url 'client-queries' %}">Clients</a>
+            <a class="hover:scale-[1.2] duration-300 hover:text-[#455A45] hover:font-medium {% block manager %}{% endblock manager %}" href="{% url 'manager-queries' %}">Managers</a>
+            <a class="hover:scale-[1.2] duration-300 hover:text-[#455A45] hover:font-medium {% block owner %}{% endblock owner %}" href="{% url 'owner-queries' %}">Owner</a>
+            <a class="hover:scale-[1.2] duration-300 hover:text-[#455A45] hover:font-medium {% block property %}{% endblock property %}" href="{% url 'property-queries' %}">Properties</a>
+            <a class="hover:scale-[1.2] duration-300 hover:text-[#455A45] hover:font-medium {% block staff %}{% endblock staff %}" href="{% url 'staff-queries' %}">Staff</a>
+        </div>
+    </nav>
+    {% block content %}{% endblock content %}
+</body>
+</html>

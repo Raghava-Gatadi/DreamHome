@@ -11,6 +11,24 @@
                     <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
+            {% if q1 %}
+                <div>
+                    <div class="flex items-center mb-3 gap-4">
+                        <div class="border-2 border-2 border-black w-40 pl-4 text-left font-medium">Property No</div>
+                        <div class="border-2 border-2 border-black w-40 pl-4 text-left font-medium">Property Type</div>
+                        <div class="border-2 border-2 border-black w-80 pl-4 text-left font-medium">Address</div>
+                        <div class="border-2 border-2 border-black w-32 pl-4 text-left font-medium">Rent</div>
+                    </div>
+                    {% for row in q1%}
+                    <div class="flex gap-4 items-center mb-1">
+                        <div class="border border-black w-40 text-left pl-4">{{row.0}}</div>
+                        <div class="border border-black w-40 text-left pl-4">{{row.1}}</div>
+                        <div class="border border-black w-80 text-left pl-4">{{row.2}}</div>
+                        <div class="border border-black w-32 text-left pl-4">{{row.3}}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
         </div>
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">Identify the total number of properties of each type at all branches.</h1>
@@ -19,6 +37,20 @@
                     <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
+            {% if q2 %}
+                <div>
+                    <div class="flex items-center mb-3 gap-4">
+                        <div class="border-2 border-2 border-black w-40 pl-4 text-left font-medium">Branch No</div>
+                        <div class="border-2 border-2 border-black w-40 pl-4 text-left font-medium">Total Properties</div>
+                    </div>
+                    {% for row in q2%}
+                    <div class="flex gap-4 items-center mb-1">
+                        <div class="border border-black w-40 text-left pl-4">{{row.0}}</div>
+                        <div class="border border-black w-40 text-left pl-4">{{row.1}}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
         </div>
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">List the total possible daily rental for property at each branch, ordered by branch number.</h1>
@@ -35,6 +67,34 @@
                     <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
+            {% if q4 %}
+                <div>
+                    <div class="flex items-center mb-3 gap-4">
+                        <div class="border-2 border-2 border-black w-32 pl-4 text-left font-medium">Prop-No</div>
+                        <div class="border-2 border-2 border-black w-40 pl-2 text-left font-medium">Prop-Type</div>
+                        <div class="border-2 border-2 border-black w-24 text-center font-medium">Rooms</div>
+                        <div class="border-2 border-2 border-black w-80 pl-4 text-left font-medium">Address</div>
+                        <div class="border-2 border-2 border-black w-20 pl-2 text-left font-medium">Rent</div>
+                        <div class="border-2 border-2 border-black w-40 pl-4 text-left font-medium">Owner No</div>
+                        <div class="border-2 border-2 border-black w-36 pl-2 text-left font-medium">Branch No</div>
+                        <div class="border-2 border-2 border-black w-36 pl-4 text-left font-medium">Staff No</div>
+                        <div class="border-2 border-2 border-black w-52 pl-4 text-left font-medium">Advertisement</div>
+                    </div>
+                    {% for row in q4%}
+                    <div class="flex gap-4 items-center mb-1">
+                        <div class="border border-black w-32 text-left pl-4">{{row.0}}</div>
+                        <div class="border border-black w-40 text-left pl-2">{{row.1}}</div>
+                        <div class="border border-black w-24 text-center">{{row.2}}</div>
+                        <div class="border border-black w-80 text-left pl-4">{{row.3}}</div>
+                        <div class="border border-black w-20 text-left pl-2">{{row.4}}</div>
+                        <div class="border border-black w-40 text-left pl-4">{{row.5}}</div>
+                        <div class="border border-black w-36 text-left pl-4">{{row.6}}</div>
+                        <div class="border border-black w-36 text-left pl-4">{{row.7}}</div>
+                        <div class="border border-black w-52 text-center ">{{row.8}}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
         </div>
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">List the details of properties that have not been rented out for more than three months.</h1>
@@ -45,70 +105,202 @@
             </form>
         </div>
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
+            <h1 class="text-2xl font-medium text-[#5B735A]">Identify flats with at least three rooms and with a monthly rent no higher than £500 in Aberdeen.</h1>
+            <form action="{% url 'pq-11' %}">
+                <div class="flex justify-end items-center my-2">
+                    <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                </div>
+            </form>
+            {% if q11 %}
+                <div>
+                    <div class="flex items-center mb-3 gap-4">
+                        <div class="border-2 border-2 border-black w-40 pl-2 text-left font-medium">Prop-No</div>
+                        <div class="border-2 border-2 border-black w-40 pl-2 text-left font-medium">Prop-Type</div>
+                        <div class="border-2 border-2 border-black w-20 pl-2 text-left font-medium">Room</div>
+                        <div class="border-2 border-2 border-black w-96 pl-2 text-left font-medium">Address</div>
+                        <div class="border-2 border-2 border-black w-40 pl-2 text-left font-medium">Owner No</div>
+                        <div class="border-2 border-2 border-black w-40 pl-2 text-left font-medium">Branch No</div>
+                        <div class="border-2 border-2 border-black w-40 pl-2 text-left font-medium">Staff No</div>
+                        <div class="border-2 border-2 border-black w-20 pl-2 text-left font-medium">Rent</div>
+                    </div>
+                    {% for row in q11%}
+                    <div class="flex gap-4 items-center mb-1">
+                        <div class="border border-black w-40 text-left pl-2">{{row.0}}</div>
+                        <div class="border border-black w-40 text-left pl-2">{{row.1}}</div>
+                        <div class="border border-black w-20 text-left pl-2">{{row.2}}</div>
+                        <div class="border border-black w-96 text-left pl-2">{{row.3}}</div>
+                        <div class="border border-black w-40 text-left pl-2">{{row.4}}</div>
+                        <div class="border border-black w-40 text-left pl-2">{{row.5}}</div>
+                        <div class="border border-black w-40 text-left pl-2">{{row.6}}</div>
+                        <div class="border border-black w-20 text-left pl-2">{{row.7}}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+        </div>
+        <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">List the details of properties for rent managed by a named member of staff.</h1>
             <form action="{% url 'pq-6' %}">
-                <div class="flex justify-between items-center my-2">
-                    <div class="flex items-center gap-2">
-                        <h1 class="mr-8">Staff name: </h1>
-                        <input class="outline-none border-2 border-black rounded-xl" type="text">
+                <div class="flex justify-end items-center my-2">
+                    <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                </div>
+            </form>
+            {% if q6 %}
+                <div>
+                    <div class="flex items-center mb-3 gap-4">
+                        <div class="border-2 border-2 border-black w-40 pl-2 text-left font-medium">Prop-No</div>
+                        <div class="border-2 border-2 border-black w-40 pl-2 text-left font-medium">Prop-Type</div>
+                        <div class="border-2 border-2 border-black w-20 pl-2 text-left font-medium">Room</div>
+                        <div class="border-2 border-2 border-black w-96 pl-2 text-left font-medium">Address</div>
+                        <div class="border-2 border-2 border-black w-40 pl-2 text-left font-medium">Owner No</div>
+                        <div class="border-2 border-2 border-black w-40 pl-2 text-left font-medium">Branch No</div>
+                        <div class="border-2 border-2 border-black w-40 pl-2 text-left font-medium">Staff No</div>
+                        <div class="border-2 border-2 border-black w-20 pl-2 text-left font-medium">Rent</div>
                     </div>
+                    {% for row in q6%}
+                    <div class="flex gap-4 items-center mb-1">
+                        <div class="border border-black w-40 text-left pl-2">{{row.0}}</div>
+                        <div class="border border-black w-40 text-left pl-2">{{row.1}}</div>
+                        <div class="border border-black w-20 text-left pl-2">{{row.2}}</div>
+                        <div class="border border-black w-96 text-left pl-2">{{row.3}}</div>
+                        <div class="border border-black w-40 text-left pl-2">{{row.4}}</div>
+                        <div class="border border-black w-40 text-left pl-2">{{row.5}}</div>
+                        <div class="border border-black w-40 text-left pl-2">{{row.6}}</div>
+                        <div class="border border-black w-20 text-left pl-2">{{row.7}}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+        </div>
+        <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
+            <h1 class="text-2xl font-medium text-[#5B735A]">Identify the properties that have been advertised more than the average number of times.</h1>
+            <form action="{% url 'pq-7' %}">
+                <div class="flex justify-end items-center my-2">
                     <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
         </div>
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">List the details of properties provided by business owners at a given branch.</h1>
-            <form action="{% url 'pq-7' %}">
-                <div class="flex justify-between items-center my-2">
-                    <div class="flex items-center gap-2">
-                        <h1 class="mr-4">Branch name: </h1>
-                        <input class="outline-none border-2 border-black rounded-xl" type="text">
-                    </div>
-                    <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
-                </div>
-            </form>
-        </div>
-        <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
-            <h1 class="text-2xl font-medium text-[#5B735A]">Identify the properties that have been advertised more than the average number of times.</h1>
             <form action="{% url 'pq-8' %}">
                 <div class="flex justify-between items-center my-2">
                     <div class="flex items-center gap-2">
                         <h1 class="mr-4">Branch name: </h1>
-                        <input class="outline-none border-2 border-black rounded-xl" type="text">
+                        <input value="{{input_p7}}" class="px-2 py-1 outline-none border-2 border-black rounded-xl" type="text">
                     </div>
                     <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
+            {% if q7 %}
+                <div>
+                    <div class="flex items-center mb-3 gap-4">
+                        <div class="border-2 border-2 border-black w-32 pl-4 text-left font-medium">Prop-No</div>
+                        <div class="border-2 border-2 border-black w-40 pl-2 text-left font-medium">Prop-Type</div>
+                        <div class="border-2 border-2 border-black w-24 text-center font-medium">Rooms</div>
+                        <div class="border-2 border-2 border-black w-80 pl-4 text-left font-medium">Address</div>
+                        <div class="border-2 border-2 border-black w-20 pl-2 text-left font-medium">Rent</div>
+                        <div class="border-2 border-2 border-black w-40 pl-4 text-left font-medium">Owner No</div>
+                        <div class="border-2 border-2 border-black w-36 pl-2 text-left font-medium">Branch No</div>
+                        <div class="border-2 border-2 border-black w-36 pl-4 text-left font-medium">Staff No</div>
+                        <div class="border-2 border-2 border-black w-52 pl-4 text-left font-medium">Advertisement</div>
+                    </div>
+                    {% for row in q7%}
+                    <div class="flex gap-4 items-center mb-1">
+                        <div class="border border-black w-32 text-left pl-4">{{row.0}}</div>
+                        <div class="border border-black w-40 text-left pl-2">{{row.1}}</div>
+                        <div class="border border-black w-24 text-center">{{row.2}}</div>
+                        <div class="border border-black w-80 text-left pl-4">{{row.3}}</div>
+                        <div class="border border-black w-20 text-left pl-2">{{row.4}}</div>
+                        <div class="border border-black w-40 text-left pl-4">{{row.5}}</div>
+                        <div class="border border-black w-36 text-left pl-4">{{row.6}}</div>
+                        <div class="border border-black w-36 text-left pl-4">{{row.7}}</div>
+                        <div class="border border-black w-52 text-center ">{{row.8}}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
         </div>
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">List the details of property (including the rental deposit) available for rent at the branch, along with the owner’s details.</h1>
             <form action="{% url 'pq-9' %}">
                 <div class="flex justify-between items-center my-2">
                     <div class="flex items-center gap-2">
-                        <h1 class="mr-4">Branch name: </h1>
-                        <input class="outline-none border-2 border-black rounded-xl" type="text">
+                        <h1 class="mr-4">Branch number: </h1>
+                        <input value="{{input_p9}}" class="px-2 py-1 outline-none border-2 border-black rounded-xl" name='pq9' type="text">
                     </div>
                     <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
+            {% if q9 %}
+                <div>
+                    <div class="flex items-center mb-3 gap-4">
+                        <div class="border-2 border-2 border-black w-32 pl-4 text-left font-medium">Prop-No</div>
+                        <div class="border-2 border-2 border-black w-40 pl-2 text-left font-medium">Prop-Type</div>
+                        <div class="border-2 border-2 border-black w-24 text-center font-medium">Rooms</div>
+                        <div class="border-2 border-2 border-black w-80 pl-4 text-left font-medium">Address</div>
+                        <div class="border-2 border-2 border-black w-20 pl-2 text-left font-medium">Rent</div>
+                        <div class="border-2 border-2 border-black w-40 pl-4 text-left font-medium">Owner No</div>
+                        <div class="border-2 border-2 border-black w-36 pl-2 text-left font-medium">Branch No</div>
+                        <div class="border-2 border-2 border-black w-36 pl-4 text-left font-medium">Staff No</div>
+                        <div class="border-2 border-2 border-black w-52 pl-4 text-left font-medium">Advertisement</div>
+                    </div>
+                    {% for row in q9%}
+                    <div class="flex gap-4 items-center mb-1">
+                        <div class="border border-black w-32 text-left pl-4">{{row.0}}</div>
+                        <div class="border border-black w-40 text-left pl-2">{{row.1}}</div>
+                        <div class="border border-black w-24 text-center">{{row.2}}</div>
+                        <div class="border border-black w-80 text-left pl-4">{{row.3}}</div>
+                        <div class="border border-black w-20 text-left pl-2">{{row.4}}</div>
+                        <div class="border border-black w-40 text-left pl-4">{{row.5}}</div>
+                        <div class="border border-black w-36 text-left pl-4">{{row.6}}</div>
+                        <div class="border border-black w-36 text-left pl-4">{{row.7}}</div>
+                        <div class="border border-black w-52 text-center ">{{row.8}}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
         </div>
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">List the details of properties managed by a named member of staff at the branch.</h1>
             <form action="{% url 'pq-10' %}">
                 <div class="flex justify-between items-center my-2">
                     <div>
-                        <div class="flex items-center gap-2 mb-2">
-                            <h1 class="mr-8">Staff name: </h1>
-                            <input class="outline-none border-2 border-black rounded-xl" type="text">
-                        </div>
                         <div class="flex items-center gap-2">
-                            <h1 class="mr-4">Branch name: </h1>
-                            <input class="outline-none border-2 border-black rounded-xl" type="text">
+                            <h1 class="mr-4">Staff number: </h1>
+                            <input value="{{input_p10}}" name='pq10' class="px-2 py-1 outline-none border-2 border-black rounded-xl" type="text">
                         </div>
                     </div>
                     <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
+            {% if q10 %}
+                <div>
+                    <div class="flex items-center mb-3 gap-4">
+                        <div class="border-2 border-2 border-black w-32 pl-4 text-left font-medium">Prop-No</div>
+                        <div class="border-2 border-2 border-black w-40 pl-2 text-left font-medium">Prop-Type</div>
+                        <div class="border-2 border-2 border-black w-24 text-center font-medium">Rooms</div>
+                        <div class="border-2 border-2 border-black w-80 pl-4 text-left font-medium">Address</div>
+                        <div class="border-2 border-2 border-black w-20 pl-2 text-left font-medium">Rent</div>
+                        <div class="border-2 border-2 border-black w-40 pl-4 text-left font-medium">Owner No</div>
+                        <div class="border-2 border-2 border-black w-36 pl-2 text-left font-medium">Branch No</div>
+                        <div class="border-2 border-2 border-black w-36 pl-4 text-left font-medium">Staff No</div>
+                        <div class="border-2 border-2 border-black w-52 pl-4 text-left font-medium">Advertisement</div>
+                    </div>
+                    {% for row in q10%}
+                    <div class="flex gap-4 items-center mb-1">
+                        <div class="border border-black w-32 text-left pl-4">{{row.0}}</div>
+                        <div class="border border-black w-40 text-left pl-2">{{row.1}}</div>
+                        <div class="border border-black w-24 text-center">{{row.2}}</div>
+                        <div class="border border-black w-80 text-left pl-4">{{row.3}}</div>
+                        <div class="border border-black w-20 text-left pl-2">{{row.4}}</div>
+                        <div class="border border-black w-40 text-left pl-4">{{row.5}}</div>
+                        <div class="border border-black w-36 text-left pl-4">{{row.6}}</div>
+                        <div class="border border-black w-36 text-left pl-4">{{row.7}}</div>
+                        <div class="border border-black w-52 text-center ">{{row.8}}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
         </div>
     </div>
 </div>

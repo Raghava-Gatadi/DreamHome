@@ -14,7 +14,7 @@
         <a href="{% url 'home' %}">
             <img class="w-52" src="{% static 'logo.png' %}" alt="test">
         </a>
-        <div class="flex gap-6 items-center text-2xl font-light">
+        <div class="flex gap-6 items-center text-2xl font-light pr-2">
             <a class="hover:scale-[1.2] duration-300 hover:text-[#455A45] hover:font-medium {% block branch %}{% endblock branch %}" href="{% url 'branch-queries' %}">Branches</a>
             <a class="hover:scale-[1.2] duration-300 hover:text-[#455A45] hover:font-medium {% block client %}{% endblock client %}" href="{% url 'client-queries' %}">Clients</a>
             <a class="hover:scale-[1.2] duration-300 hover:text-[#455A45] hover:font-medium {% block manager %}{% endblock manager %}" href="{% url 'manager-queries' %}">Managers</a>

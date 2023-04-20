@@ -11,18 +11,54 @@
                     <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
+            {% if q1 %}
+                <div>
+                    <div class="flex items-center mb-3 gap-4">
+                        <div class="border-2 border-2 border-black w-40 pl-4 text-left font-medium">Owner No</div>
+                        <div class="border-2 border-2 border-black w-40 pl-4 text-left font-medium">Name</div>
+                        <div class="border-2 border-2 border-black w-80 pl-4 text-left font-medium">Address</div>
+                        <div class="border-2 border-2 border-black w-80 pl-4 text-left font-medium">Telephone</div>
+                        <div class="border-2 border-2 border-black w-32 pl-4 text-left font-medium">Business Type</div>
+                        <div class="border-2 border-2 border-black w-32 pl-4 text-left font-medium">Company Name</div>
+                    </div>
+                    {% for row in q1%}
+                    <div class="flex gap-4 items-center mb-1">
+                        <div class="border border-black w-40 text-left pl-4">{{row.0}}</div>
+                        <div class="border border-black w-40 text-left pl-4">{{row.1}}</div>
+                        <div class="border border-black w-80 text-left pl-4">{{row.2}}</div>
+                        <div class="border border-black w-80 text-left pl-4">{{row.3}}</div>
+                        <div class="border border-black w-32 text-left pl-4">{{row.4}}</div>
+                        <div class="border border-black w-32 text-left pl-4">{{row.5}}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
         </div>
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">Identify the name and telephone number of an owner of a given property.</h1>
             <form action="{% url 'oq-2' %}">
                 <div class="flex justify-between items-center my-2">
                     <div class="flex items-center gap-2">
-                        <h1 class="">Property name: </h1>
-                        <input class="outline-none border-2 border-black rounded-xl" type="text">
+                        <h1 class="">Property number: </h1>
+                        <input value="{{input_o1}}" name='o2' class="px-2 py-1 outline-none border-2 border-black rounded-xl" type="text">
                     </div>
                     <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>
+            {% if q2 %}
+                <div>
+                    <div class="flex items-center mb-3 gap-4">
+                        <div class="border-2 border-2 border-black w-40 pl-4 text-left font-medium">Name</div>
+                        <div class="border-2 border-2 border-black w-80 pl-4 text-left font-medium">Telephone</div>
+                    </div>
+                    {% for row in q2%}
+                    <div class="flex gap-4 items-center mb-1">
+                        <div class="border border-black w-40 text-left pl-4">{{row.0}}</div>
+                        <div class="border border-black w-80 text-left pl-4">{{row.1}}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
         </div>
     </div>
 </div>

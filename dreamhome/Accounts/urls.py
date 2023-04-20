@@ -33,11 +33,13 @@ urlpatterns = [
     path('property/query-8',property_query_8,name="pq-8"),
     path('property/query-9',property_query_9,name="pq-9"),
     path('property/query-10',property_query_10,name="pq-10"),
+    path('property/query-11',property_query_11,name="pq-11"),
     path('staff',staff,name="staff-queries"),
     path('staff/query-1',staff_query_1,name="sq-1"),
     path('staff/query-2',staff_query_2,name="sq-2"),
     path('staff/query-3',staff_query_3,name="sq-3"),
     path('staff/query-4',staff_query_4,name="sq-4"),
-    path('staff/query-5',staff_query_5,name="sq-5")
+    path('staff/query-5',staff_query_5,name="sq-5"),
+    path('staff/query-6',staff_query_6,name="sq-6"),
 ]
 

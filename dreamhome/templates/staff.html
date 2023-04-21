@@ -29,7 +29,17 @@
         <div class="rounded-xl border-2 hover:shadow-lg hover:scale-[1.02] duration-200 py-3  px-4 mb-3">
             <h1 class="text-2xl font-medium text-[#5B735A]">List details of staff supervised by a named Supervisor at the branch.</h1>
             <form action="{% url 'sq-5' %}">
-                <div class="flex justify-end items-center my-2">
+                <div class="flex justify-between items-center my-2">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <h1 class="mr-1">Supervisor Number: </h1>
+                            <input value="{{input_s5_1}}" name='sq5_1' class="px-2 py-1 outline-none border-2 border-black rounded-xl" type="text">
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <h1 class="mr-8">Branch Number: </h1>
+                            <input value="{{input_s5_2}}" name='sq5_2' class="px-2 py-1 outline-none border-2 border-black rounded-xl" type="text">
+                        </div>
+                    </div>
                     <div><button type='submit'  class="bg-black text-white rounded-2xl text-lg px-3 py-1 hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                 </div>
             </form>

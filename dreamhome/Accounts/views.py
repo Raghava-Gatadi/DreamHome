@@ -37,7 +37,7 @@ def branch_query_1(request):
 
 def branch_query_2(request):
     try:
-        cursor.execute('select * from lease where datediff(finish,start) < 365 and propertyno in (select propertyno from property where address like "%london");')
+        cursor.execute('select * from lease where datediff(finish,start) < 365 and propertyno in (select propertyno from property where address like "London%");')
         data = cursor.fetchall()
     except:
         data = None
@@ -47,7 +47,7 @@ def branch_query_2(request):
 
 def branch_query_3(request):
     try:
-        cursor.execute("select * from Branch")
+        cursor.execute("SELECT branchno, SUM(rent) AS total_daily_rental FROM property GROUP BY branchno ORDER BY branchno;")
         data = cursor.fetchall()
     except:
         data = None
@@ -69,7 +69,7 @@ def branch_query_4(request):
 
 def branch_query_5(request):
     try:
-        cursor.execute("select count(branchno) as No_of_branches,address from branch group by address;")
+        cursor.execute("SELECT SUBSTRING_INDEX(address, ', ', 1) AS city, COUNT(address) AS num_branches FROM branch GROUP BY city;")
         data = cursor.fetchall()
     except:
         data = None
@@ -102,20 +102,21 @@ def branch_query_7(request):
     })
 
 def branch_query_8(request):
+    input = request.GET['b8']
     try:
-        cursor.execute("select * from Branch")
+        cursor.execute(f'SELECT lease.*, property.address, client.name as client_name, client.phone FROM lease INNER JOIN property ON lease.propertyno = property.propertyno INNER JOIN client ON lease.clientno = client.clientno WHERE lease.branchno = "{input}" AND  finish BETWEEN DATE_ADD(NOW(), INTERVAL 1 MONTH) AND DATE_ADD(NOW(), INTERVAL 2 MONTH);')
         data = cursor.fetchall()
     except:
         data = None
     return render(request,'branch.html',{
-        'q8':data
+        'q8':data,
+        'input_b8': input
     })
 
 def client_query_1(request):
     input = request.GET['cq1']
-    print(input)
     try:
-        cursor.execute(f'select clientno,name,ptype from client where branchno="{input}";')
+        cursor.execute(f'select clientno,name,phone,ptype from client where branchno="{input}";')
         data = cursor.fetchall()
     except:
         data = None
@@ -137,43 +138,55 @@ def client_query_2(request):
     })
 
 def client_query_3(request):
+    input = request.GET['c3']
     try:
-        cursor.execute(f'select x.name, z.propertyno, z.comment from client x, feedback z where x.clientno=z.clientno;')
+        cursor.execute(f'SELECT * FROM feedback WHERE propertyno = "{input}"')
         data = cursor.fetchall()
     except:
         data = None
     return render(request,'client.html',{
-        'q3':data
+        'q3':data,
+        'input_c3':input
     })
 
 def client_query_4(request):
+    input = request.GET['c4']
     try:
-        cursor.execute("select * from Branch")
+        cursor.execute(f'SELECT client.name, client.phone FROM client, feedback WHERE client.clientno = feedback.clientno AND feedback.propertyno = "{input}" AND feedback.comment IS NULL;')
         data = cursor.fetchall()
     except:
         data = None
     return render(request,'client.html',{
-        'q4':data
+        'q4':data,
+        'input_c4':input
     })
 
 def client_query_5(request):
+    input_client = request.GET['c5_1']
+    input_property = request.GET['c5_2']
     try:
-        cursor.execute("select * from Branch")
+        cursor.execute(f'SELECT * FROM lease WHERE clientno = "{input_client}" AND propertyno = "{input_property}";')
         data = cursor.fetchall()
     except:
         data = None
     return render(request,'client.html',{
-        'q5':data
+        'q5':data,
+        'input_c5_1':input_client,
+        'input_c5_2':input_property
     })
 
 def client_query_6(request):
+    input_type = request.GET['c6_1']
+    input_rent = request.GET['c6_2']
     try:
-        cursor.execute("select * from Branch")
+        cursor.execute(f'SELECT client.clientno, client.name, client.ptype, client.maxrent, client.branchno, client.staffno, client.rdate, client.phone FROM client WHERE client.ptype = "{input_type}" AND client.maxrent <= "{input_rent}";')
         data = cursor.fetchall()
     except:
         data = None
     return render(request,'client.html',{
-        'q6':data
+        'q6':data,
+        'input_c6_1':input_type,
+        'input_c6_2': input_rent
     })
 
 def manager_query_1(request):
@@ -230,7 +243,7 @@ def property_query_2(request):
 
 def property_query_3(request):
     try:
-        cursor.execute("select * from Branch")
+        cursor.execute("SELECT p.branchno, SUM(p.rent) AS total_daily_rental FROM property p GROUP BY p.branchno ORDER BY p.branchno;")
         data = cursor.fetchall()
     except:
         data = None
@@ -240,7 +253,7 @@ def property_query_3(request):
 
 def property_query_4(request):
     try:
-        cursor.execute("select * from property where address like '%Glasgow' and rent<=450;")
+        cursor.execute("select * from property where address like 'Glasgow%' and rent<=450;")
         data = cursor.fetchall()
     except:
         data = None
@@ -259,13 +272,15 @@ def property_query_5(request):
     })
 
 def property_query_6(request):
+    input=request.GET['p6']
     try:
-        cursor.execute("select propertyno,ptype,rooms,address,ownerno,branchno,property.staffno,rent from property where property.staffno in (select staffno from staff where staffno is not null);")
+        cursor.execute(f'SELECT propertyno, ptype, rooms, address, rent, staff.name AS manager FROM property INNER JOIN staff ON property.staffno = staff.staffno WHERE staff.staffno = "{input}";')
         data = cursor.fetchall()
     except:
         data = None
     return render(request,'property.html',{
-        'q6':data
+        'q6':data,
+        'input_p6': input
     })
 
 def property_query_7(request):
@@ -364,13 +379,17 @@ def staff_query_4(request):
     })
 
 def staff_query_5(request):
+    input_supervisor = request.GET['sq5_1']
+    input_branch = request.GET['sq5_2']
     try:
-        cursor.execute("select * from staff where supervisor is not null;")
+        cursor.execute(f'SELECT s.staffno, s.name, s.sex, s.dob, s.position, s.salary, s.supervisor, s.branchno FROM staff s WHERE s.supervisor = "{input_supervisor}" AND s.branchno = "{input_branch}";')
         data = cursor.fetchall()
     except:
         data = None
     return render(request,'staff.html',{
-        'q5':data
+        'q5':data,
+        'input_s5_1':input_supervisor,
+        'input_s5_2':input_branch
     })
 
 def staff_query_6(request):

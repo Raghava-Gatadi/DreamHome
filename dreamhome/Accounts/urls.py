@@ -1,6 +1,7 @@
 from django.urls import path
 from Accounts.views import *
 urlpatterns = [
+    path('query',general,name='general_query'),
     path('branch',branch,name="branch-queries"),
     path('branch/query-1',branch_query_1,name="bq-1"),
     path('branch/query-2',branch_query_2,name="bq-2"),

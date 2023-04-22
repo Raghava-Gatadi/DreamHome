@@ -3,8 +3,200 @@
 
 {% block title %}Home Page{% endblock title %}
 {% block content %}
-    {% comment %} <div>
-        <h1>Hello, Welcome to homepage</h1>
-        <h2> Shivam </h2>
-    </div> {% endcomment %}
+<div class="bg-[#D1E5D0] p-4 px-[10%] m-auto max-w-screen-2xl">
+    <div class="bg-white rounded-xl p-4">
+        <div class='bg-gray-100 rounded-xl p-4'>
+            <h1 class="text-2xl font-bold my-2">Write any query:</h1>
+            <form action="{% url 'general_query' %}">
+                <div class="flex justify-between gap-4 items-center my-2">
+                    <input class='w-full px-3 py-1 border-2 border-black rounded-lg' name='general_query' value='{{input_general}}' type="text">
+                    <div><button type='submit' class="bg-black text-white rounded-2xl text-lg px-3 py-1  hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
+                </div>
+            </form>
+            {% if output %}
+            <div>
+                {% for row in output %}
+                    <div class="flex overflow-x-auto text-center">
+                        {% for col in row %}
+                            <h1 class="w-60 text-gray-500 font-light border border-black">{{col}}</h1>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        <div class="bg-gray-100 rounded-xl p-4 mt-6">
+            <h1 class="text-2xl font-bold my-2">Staff Details</h1>
+            <div class="flex overflow-x-auto gap-4 text-center text-gray-600">
+                <h1 class="w-60 text-lg font-semibold">Staff No</h1>
+                <h1 class="w-60 text-lg font-semibold">Name</h1>
+                <h1 class="w-60 text-lg font-semibold">Sex</h1>
+                <h1 class="w-60 text-lg font-semibold">DOB</h1>
+                <h1 class="w-60 text-lg font-semibold">Position</h1>
+                <h1 class="w-60 text-lg font-semibold">Salary</h1>
+                <h1 class="w-60 text-lg font-semibold">Supervisor</h1>
+                <h1 class="w-60 text-lg font-semibold">Branch No</h1>
+            </div>
+            <hr class="border border-black">
+            <div>
+                {% for row in staff %}
+                    <div class="flex overflow-x-auto text-center">
+                        {% for col in row %}
+                            <h1 class="w-60 text-gray-500 font-light border-b border-r border-l border-black">{{col}}</h1>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="bg-gray-100 rounded-xl p-4 mt-6">
+            <h1 class="text-2xl font-bold mb-4">Branch Details</h1>
+            <div class="flex overflow-x-auto text-center text-gray-600">
+                <h1 class="w-80 text-lg font-semibold">Branch No</h1>
+                <h1 class="w-80 text-lg font-semibold">Address</h1>
+                <h1 class="w-80 text-lg font-semibold">Telephone</h1>
+                <h1 class="w-80 text-lg font-semibold">Manager No</h1>
+            </div>
+            <hr class="border border-black">
+            <div>
+                {% for row in branch %}
+                    <div class="flex overflow-x-auto text-center">
+                        {% for col in row %}
+                            <h1 class="w-80 text-gray-500 font-light border-b border-r border-l border-black">{{col}}</h1>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="bg-gray-100 rounded-xl p-4 mt-6">
+            <h1 class="text-2xl font-bold mb-4">Manager Details</h1>
+            <div class="flex overflow-x-auto gap-4 text-center text-gray-600">
+                <h1 class="w-80 text-lg font-semibold">Manager No</h1>
+                <h1 class="w-80 text-lg font-semibold">Start Date</h1>
+                <h1 class="w-80 text-lg font-semibold">Bonus</h1>
+                <h1 class="w-80 text-lg font-semibold">Branch No</h1>
+            </div>
+            <hr class="border border-black">
+            <div>
+                {% for row in manager %}
+                    <div class="flex overflow-x-auto text-center">
+                        {% for col in row %}
+                            <h1 class="w-80 text-gray-500 font-light border-b border-r border-l border-black">{{col}}</h1>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="bg-gray-100 rounded-xl p-4 mt-6">
+            <h1 class="text-2xl font-bold my-2">Property Details</h1>
+            <div class="flex overflow-x-auto gap-4 text-center text-gray-600">
+                <h1 class="w-80 text-lg font-semibold">Property No</h1>
+                <h1 class="w-80 text-lg font-semibold">Prop Type</h1>
+                <h1 class="w-80 text-lg font-semibold">Rooms</h1>
+                <h1 class="w-80 text-lg font-semibold">Address</h1>
+                <h1 class="w-80 text-lg font-semibold">Rent</h1>
+                <h1 class="w-80 text-lg font-semibold">Owner No</h1>
+                <h1 class="w-80 text-lg font-semibold">Branch No</h1>
+                <h1 class="w-80 text-lg font-semibold">Staff No</h1>
+                <h1 class="w-80 text-lg font-semibold">Advertisement</h1>
+            </div>
+            <hr class="border border-black">
+            <div>
+                {% for row in property %}
+                    <div class="flex overflow-x-auto text-center">
+                        {% for col in row %}
+                            <h1 class="w-80 text-gray-500 font-light border-b border-r border-l border-black">{{col}}</h1>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="bg-gray-100 rounded-xl p-4 mt-6">
+            <h1 class="text-2xl font-bold my-2">Owner Details</h1>
+            <div class="flex overflow-x-auto gap-4 text-center text-gray-600">
+                <h1 class="w-80 text-lg font-semibold">Owner No</h1>
+                <h1 class="w-80 text-lg font-semibold">Name</h1>
+                <h1 class="w-80 text-lg font-semibold">Address</h1>
+                <h1 class="w-80 text-lg font-semibold">Telephone</h1>
+                <h1 class="w-80 text-lg font-semibold">Business Type</h1>
+                <h1 class="w-80 text-lg font-semibold">Company Name</h1>
+            </div>
+            <hr class="border border-black">
+            <div>
+                {% for row in owner %}
+                    <div class="flex overflow-x-auto text-center">
+                        {% for col in row %}
+                            <h1 class="w-80 text-gray-500 font-light border-b border-r border-l border-black">{{col}}</h1>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="bg-gray-100 rounded-xl p-4 mt-6">
+            <h1 class="text-2xl font-bold my-2">Client Details</h1>
+            <div class="flex items-center overflow-x-auto gap-4 text-center text-gray-600">
+                <h1 class="w-80 text-lg font-semibold">Client No</h1>
+                <h1 class="w-80 text-lg font-semibold">Name</h1>
+                <h1 class="w-80 text-lg font-semibold">Prop Type</h1>
+                <h1 class="w-80 text-lg font-semibold">Max Rent</h1>
+                <h1 class="w-80 text-lg font-semibold">Branch No</h1>
+                <h1 class="w-80 text-lg font-semibold">Staff No</h1>
+                <h1 class="w-80 text-lg font-semibold">Registered Date</h1>
+                <h1 class="w-80 text-lg font-semibold">Phone</h1>
+            </div>
+            <hr class="border border-black">
+            <div>
+                {% for row in client %}
+                    <div class="flex overflow-x-auto text-center">
+                        {% for col in row %}
+                            <h1 class="w-80 text-gray-500 font-light border-b border-r border-l border-black">{{col}}</h1>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="bg-gray-100 rounded-xl p-4 mt-6">
+            <h1 class="text-2xl font-bold my-2">Feedback Details</h1>
+            <div class="flex items-center overflow-x-auto gap-4 text-center text-gray-600">
+                <h1 class="w-80 text-lg font-semibold">Property No</h1>
+                <h1 class="w-80 text-lg font-semibold">Client No</h1>
+                <h1 class="w-80 text-lg font-semibold">date</h1>
+                <h1 class="w-80 text-lg font-semibold">Feedback</h1>
+            </div>
+            <hr class="border border-black">
+            <div>
+                {% for row in feedback %}
+                    <div class="flex overflow-x-auto text-center">
+                        {% for col in row %}
+                            <h1 class="w-80 text-gray-500 font-light border-b border-r border-l border-black">{{col}}</h1>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="bg-gray-100 rounded-xl p-4 mt-6">
+            <h1 class="text-2xl font-bold my-2">Lease Details</h1>
+            <div class="flex items-center overflow-x-auto gap-4 text-center text-gray-600">
+                <h1 class="w-80 text-lg font-semibold">Client No</h1>
+                <h1 class="w-80 text-lg font-semibold">Property No</h1>
+                <h1 class="w-80 text-lg font-semibold">Rent</h1>
+                <h1 class="w-80 text-lg font-semibold">Payment Method</h1>
+                <h1 class="w-80 text-lg font-semibold">Deposite Paid</h1>
+                <h1 class="w-80 text-lg font-semibold">Start Date</h1>
+                <h1 class="w-80 text-lg font-semibold">Finish Date</h1>
+                <h1 class="w-80 text-lg font-semibold">Duration</h1>
+                <h1 class="w-80 text-lg font-semibold">Branch No</h1>
+            </div>
+            <hr class="border border-black">
+            <div>
+                {% for row in lease %}
+                    <div class="flex overflow-x-auto text-center">
+                        {% for col in row %}
+                            <h1 class="w-80 text-gray-500 font-light border-b border-r border-l border-black">{{col}}</h1>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

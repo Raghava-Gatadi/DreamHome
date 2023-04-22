@@ -5,7 +5,66 @@ mydb = mysql.connector.connect(host="127.0.0.1", user="root", password="Raghava@
 cursor = mydb.cursor()
 
 def home(request):
-    return render(request,'home.html')
+    cursor.execute("select * from staff")
+    staff = cursor.fetchall()
+    cursor.execute("select * from branch")
+    branch = cursor.fetchall()
+    cursor.execute("select * from manager")
+    manager = cursor.fetchall()
+    cursor.execute("select * from property")
+    property = cursor.fetchall()
+    cursor.execute("select * from owner")
+    owner = cursor.fetchall()
+    cursor.execute("select * from client")
+    client = cursor.fetchall()
+    cursor.execute("select * from feedback")
+    feedback = cursor.fetchall()
+    cursor.execute("select * from lease")
+    lease = cursor.fetchall()
+    return render(request,'home.html',{
+        'staff':staff,
+        'branch':branch,
+        'manager':manager,
+        'property':property,
+        'owner':owner,
+        'client':client,
+        'feedback':feedback,
+        'lease':lease
+    })
+
+def general(request):
+    input = str(request.GET['general_query'])
+    cursor.execute(input)
+    data = cursor.fetchall()
+    cursor.execute("select * from staff")
+    staff = cursor.fetchall()
+    cursor.execute("select * from branch")
+    branch = cursor.fetchall()
+    cursor.execute("select * from manager")
+    manager = cursor.fetchall()
+    cursor.execute("select * from property")
+    property = cursor.fetchall()
+    cursor.execute("select * from owner")
+    owner = cursor.fetchall()
+    cursor.execute("select * from client")
+    client = cursor.fetchall()
+    cursor.execute("select * from feedback")
+    feedback = cursor.fetchall()
+    cursor.execute("select * from lease")
+    lease = cursor.fetchall()
+    return render(request,'home.html',{
+        'staff':staff,
+        'branch':branch,
+        'manager':manager,
+        'property':property,
+        'owner':owner,
+        'client':client,
+        'feedback':feedback,
+        'lease':lease,
+        'input_general': input,
+        'output': data
+    })
+
 
 def branch(request):
     return render(request,'branch.html')
@@ -294,13 +353,15 @@ def property_query_7(request):
     })
 
 def property_query_8(request):
+    input=request.GET['p8']
     try:
-        cursor.execute("select * from Branch")
+        cursor.execute(f'SELECT p.propertyno, p.ptype, p.rooms, p.rent, o.ownerno, o.name AS owner_name, o.address AS owner_address, o.telephone AS owner_telephone, o.btype, o.cname, p.branchno FROM property p INNER JOIN owner o ON p.ownerno = o.ownerno WHERE o.btype IS NOT NULL AND p.branchno = "{input}";')
         data = cursor.fetchall()
     except:
         data = None
     return render(request,'property.html',{
-        'q8':data
+        'q8':data,
+        'input_p8':input
     })
 
 def property_query_9(request):

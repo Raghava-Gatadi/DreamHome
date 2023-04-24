@@ -170,8 +170,9 @@
                 <form action="{% url 'bq-8' %}">
                     <div class="flex justify-between items-center my-2">
                         <div class="flex items-center gap-3">
-                            <h1>Branch name: </h1>
+                            <h1>Branch number: </h1>
                             <input value="{{input_b8}}" name='b8' class="px-2 py-1 outline-none border-2 border-black rounded-xl" type="text">
+                
                         </div>
                         <div><button type='submit' class="bg-black text-white rounded-2xl text-lg px-3 py-1  hover:bg-white hover:text-black hover:border-2 hover:border-black hover:font-medium">Execute</button></div>
                     </div>
@@ -192,10 +193,6 @@
                         <div class="border-2 w-80 text-left pl-4">{{row.3}}</div>
                     </div>
                     {% endfor %}
-                </div>
-                {% else %}
-                <div class="text-xl font-semibold text-center">
-                    <h1>No Data Found</h1>
                 </div>
                 {% endif %}
             </div>

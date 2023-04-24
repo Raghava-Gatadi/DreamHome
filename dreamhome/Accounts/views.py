@@ -163,7 +163,7 @@ def branch_query_7(request):
 def branch_query_8(request):
     input = request.GET['b8']
     try:
-        cursor.execute(f'SELECT lease.*, property.address, client.name as client_name, client.phone FROM lease INNER JOIN property ON lease.propertyno = property.propertyno INNER JOIN client ON lease.clientno = client.clientno WHERE lease.branchno = "{input}" AND  finish BETWEEN DATE_ADD(NOW(), INTERVAL 1 MONTH) AND DATE_ADD(NOW(), INTERVAL 2 MONTH);')
+        cursor.execute(f'SELECT p.propertyno, p.address, p.rent, p.branchno,l.finish FROM property p, lease l WHERE p.propertyno=l.propertyno and p.branchno="{input}" and  DATEDIFF(CURDATE(), l.finish) < 30;')
         data = cursor.fetchall()
     except:
         data = None
@@ -322,8 +322,9 @@ def property_query_4(request):
 
 def property_query_5(request):
     try:
-        cursor.execute("select * from Branch")
+        cursor.execute("SELECT p.propertyno, p.address, p.rent, p.branchno,l.finish FROM property p, lease l WHERE p.propertyno=l.propertyno and  DATEDIFF(CURDATE(), l.finish) > 90;")
         data = cursor.fetchall()
+        print(data)
     except:
         data = None
     return render(request,'property.html',{
@@ -389,7 +390,7 @@ def property_query_10(request):
 
 def property_query_11(request):
     try:
-        cursor.execute("select * from property where ptype='Flat' and rooms>=3 and address like '%Aberdeen%';")
+        cursor.execute("select * from property where ptype='Flat' and rooms>=3 and rent>500 and address like '%Aberdeen%';")
         data = cursor.fetchall()
     except:
         data = None
